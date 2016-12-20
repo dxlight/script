@@ -16,7 +16,7 @@ do
       done
    usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')
    done
-/home/ubuntu/script/mdcct/plotavx2 -x 1 -k 12446025604899037236 -d /home/plots -s $nounce -n $step -m $ram
+/home/ubuntu/script/mdcct/plotavx2 -x 2 -k 12446025604899037236 -d /home/plots -s $nounce -n $step -m $ram
 mv /home/plots/* /home/plots/complete
 nounce=$(( $nounce + $step))
 done

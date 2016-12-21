@@ -17,7 +17,8 @@ do
    usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')
    done
 /home/ubuntu/script/mdcct/plotavx2 -x 2 -k 12446025604899037236 -d /home/plots -s $nounce -n $step -m $ram
-mv /home/plots/* /home/plots/complete
+r=$((RANDOM % 2))
+mv /home/plots/* /home/plots/complete$r
 nounce=$(( $nounce + $step))
 done
 

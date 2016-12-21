@@ -2,7 +2,7 @@
 nounce=20000000000
 till=20250000000
 step=800000
-ram=200000
+ram=400000
 for ((z=$nounce;z<=$till;z+$step))
 do
    usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')

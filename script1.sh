@@ -1,3 +1,4 @@
+apt-get update
 apt-get install lxde tightvncserver firefox terminator make gcc git tmux -y 
 tightvncserver -geometry 1300x700
 git clone https://github.com/Mirkic7/mdcct

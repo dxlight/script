@@ -1,8 +1,8 @@
 #!/bin/bash
-nounce=20000000000
-till=20250000000
+nounce=21000000000
+till=21250000000
 step=800000
-ram=400000
+ram=200000
 for ((z=$nounce;z<=$till;z+$step))
 do
    usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')

@@ -1,11 +1,11 @@
 #!/bin/bash
-nounce=21000000000
-till=21250000000
+nounce=33000000000
+till=34000000000
 step=800000
 ram=200000
 for ((z=$nounce;z<=$till;z+$step))
 do
-   usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')
+   usep=$(df -hl | awk '/^\/dev\/md3/ { sum+=$5 } END { print sum }')
    while [ $usep -ge 70 ]
    do
       echo RUNNING LOW ON HDD - Waiting for gdrive upload
@@ -14,10 +14,15 @@ do
          echo $i - RUNNING LOW ON HDD - Waiting for gdrive upload
          sleep 1
       done
-   usep=$(df -hl | awk '/^\/dev\/xvda1/ { sum+=$5 } END { print sum }')
+   usep=$(df -hl | awk '/^\/dev\/md3/ { sum+=$5 } END { print sum }')
    done
-/home/ubuntu/script/mdcct/plotavx2 -x 2 -k 12446025604899037236 -d /home/plots -s $nounce -n $step -m $ram
-mv /home/plots/* /home/plots/complete
+/root/script/mdcct/plotavx2 -x 1 -k 12446025604899037236 -d /home/plotgen -s $nounce -n $step -m $ram
+r=$(( $RANDOM % 2 ))
+if [ "$r" == "0" ]
+then
+   mv /home/plotgen/* /home/plots/complete
+else
+   mv /home/plotgen/* /home/plots/complete2
+fi
 nounce=$(( $nounce + $step))
 done
-
